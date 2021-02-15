@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 login-container">
+      <h2 style="margin: auto">RegisterForm</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>User Id:</label>
+          <input type="email" class="form-control" formControlName="userName" />
+        </div>
+        <div class="form-group">
+          <label>EmailId:</label>
+          <input type="text" class="form-control" formControlName="emailId" />
+        </div>
+
+        <div class="form-group">
+          <label>Mobile:</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="mobileNo"
+          />
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+          />
+        </div>
+        <div
+          *ngFor="
+            let address of registerForm.get('address').value;
+            let i = index
+          "
+          formArrayName="address"
+        >
+          <div [formGroupName]="i">
+            <div class="form-group">
+              <label>city</label>
+              <input formControlName="city" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Pincode</label>
+              <input formControlName="pincode" class="form-control" />
+            </div>
+          </div>
+          <button class="btn btn-success" (click)="addNewAddressGroup()">
+            ADD
+          </button>
+          <div *ngIf="isDeleted">
+            <button class="btn btn-danger" (click)="deleteAddressGroup(i)">
+              Delete
+            </button>
+          </div>
+        </div>
+        <button class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

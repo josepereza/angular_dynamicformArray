@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 login-container">
+      <!-- <h2 style="margin: auto" #head>{{ data1 }}</h2> -->
+      <p #para appValidation highlightColor="yellow">paraa</p>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>User Id:</label>
+          <input
+            appValidation
+            type="email"
+            class="form-control"
+            formControlName="userid"
+          />
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="pwd"
+          />
+        </div>
+        <button class="btn btn-primary">Login</button>
+        <a href="register">Register</a>
+      </form>
+    </div>
+  </div>
+</div>
